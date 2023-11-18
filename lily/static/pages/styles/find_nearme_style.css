@@ -1,0 +1,157 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+/* edinting main block */
+
+.main-block{
+    background-color: #FFFFFF;
+}
+
+.content{
+    margin: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Style for the heading */
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Style for the form container */
+  form {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
+  /* Style for the label */
+  label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #666;
+  }
+  
+  /* Style for the input field */
+  input[type="text"] {
+    max-width: 600px;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the search button */
+  button.btn-search {
+    background-color: #000000;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  button.btn-search:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  /* Style for the show all button */
+  button.btn-showall {
+    background-color: #FFFFFF;
+    color: #000000;
+    border-color: #000000;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.btn-showall:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+
+
+.content p {
+    margin-top: 40px;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-results a {
+    text-decoration: none;
+    background-color: #5B606A;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .search-results a:hover {
+    background-color: #729AEF;
+  }
+
+.all-address {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* gap: 10px; */
+  }
+  
+  /* Style for the address links */
+  .all-address a {
+    text-decoration: none;
+    background-color: #5B606A;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* Hover effect */
+  .all-address a:hover {
+    background-color: #729AEF;
+  }
+   
+
+iframe{
+    margin: 40px;
+    border-radius: 30px;
+}
+
+  

@@ -1,0 +1,103 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel='stylesheet' href="{% static 'shop/styles/shopstyle.css' %}"/>
+    <link rel="stylesheet" href="{% static 'base/navigation_menu_style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'base/footer_style.css' %}"/>
+</head>
+<body>
+    {% include 'base/navigation_menu.html' %}
+
+      <div class="main-content">
+
+        <div class="left-block">
+            <form class="search-prod-form">
+                <input type="text" id="search-prod" name="query" placeholder="Search products..">
+                <button class="btn-search" type="submit" name="action" value="search-product">></button>
+            </form>
+
+            <div class="categories">
+                <p class="title">Categories</p>
+                <p class="sparkling-cat">Sparkling  (4)</p>
+                <p class="wine-cat">Wine    (8)</p>
+            </div>
+
+            <div class="best-sellers">
+                <p class="title">Our Best Sellers</p>
+
+                <div class="products-list">
+                {% for best_seller in best_sellers %}
+
+                    <a href="{% url 'each_wine' wine_slug=best_seller.slug %}">
+                        <div class="card">
+                            <img class="product-img" src="{{ best_seller.image.url }}"/>
+                            <div class="info-product-shop">
+                                <span class="name-prod">{{ best_seller.name }}</span>
+                                <div class="stars">
+                                {% for seller_stars in '12345' %}
+                                    <img src="{% static 'shop/images/site-img/star-photo-review.svg' %}"/>
+                                {% endfor %}
+                                </div>
+                                <span class="price">${{ best_seller.price }}0</span>
+                            </div>
+
+                        </div>
+                    </a>
+                    <hr class="horizontal-line-menu"/>
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="right-block">
+            <div class="head-rightcolum">
+
+              <p class="results">Showing all 12 results</p>
+              
+              <form class="ordering-form" method="get" action="{% url 'all_products' %}">
+                <select name="ordering-by" class="sorting">
+                  <option value="default" selected="selected">Sorting by Default</option>
+                  <option value="popularity">By popularity</option>
+                  <option value="price-up">By Price Low -> High</option>
+                  <option value="price-low">By Price High -> Low</option>
+                </select>
+                <button type="submit" name="action" value="ordering">Sort</button>
+              </form>
+            </div>
+
+            <div class="proucts-shop">
+            {% for product in all_wines %}
+                <div class="product-card">
+                    <a href="{% url 'each_wine' wine_slug=product.slug %}">
+                        <img src="{{ product.image.url }}" alt="Wait please"/>
+                      </a>
+                      <div class="info-product-shop">
+                        <h2 class="product-name">{{ product.name }} </h2>
+                        <p class="product-category">{{ product.category }}</p>
+                        <p class="product-price">${{ product.price }}0</p>
+                        <div class="review">
+                          <p>stars</p>
+                          <div class="stars-img">
+                          {% for stars in '12345' %}
+                            <img src="{% static 'shop/images/site-img/star-photo-review.svg' %}"/>
+                          {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            {% endfor %}
+
+            </div>
+
+        </div>
+
+      </div>
+
+      {% include 'base/footer.html' %}
+
+</body>
+</html>

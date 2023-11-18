@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre Checkout</title>
+    <link rel="stylesheet" href="{% static 'orders/styles/choose_style.css' %}">
+    <link rel="stylesheet" href="{% static 'base/navigation_menu_style.css' %}">
+</head>
+<body>
+    {% include 'base/navigation_menu.html' %}
+
+    <div class="main-block">
+        <div class="guest">
+            <a href="{% url 'checkout_as_guest' %}">
+                <button>Continue As Guest</button>
+            </a>
+        </div>
+        <div class="user">
+            <a href="{% url 'login' %}?redirect_url={% url 'all_products' %}">
+                <button>Continue with Login</button>
+            </a>
+        </div>
+        
+    </div>
+
+
+</body>
+</html>

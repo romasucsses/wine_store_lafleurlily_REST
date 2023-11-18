@@ -1,0 +1,99 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ wine.name }}</title>
+    <link rel="stylesheet" href="{% static 'shop/styles/product.css' %}" />
+    <link rel="stylesheet" href="{% static 'base/navigation_menu_style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'base/footer_style.css' %}"/>
+    <!--adding favicon of site-->
+    <link rel="icon" href="{% static 'shop/images/site-img/logo.png' %}" type="image/png" />
+  </head>
+  <body>
+
+    {% include 'base/navigation_menu.html' %}
+
+    <div class="product">
+      <img src="{{ wine.image.url }}" class="prod-img" />
+
+      <p class="situated">Home/{{ wine.category }}/{{ wine.name }}</p>
+      <p class="categ1">{{ wine.category }}</p>
+      <h2 class="name">{{ wine.name }}</h2>
+      <h4 class="price">${{ wine.price }}0</h4>
+      <p class="shiping">+ Free Shipping</p>
+      
+      <form action="{% url 'each_wine' wine.slug %}" method="post">
+        {% csrf_token %}
+        <input id="quality" value="1" type="number">
+
+        <button type="submit" name="action" value="add_to_cart" class="btn1">ADD TO CART</button>
+      </form>
+      <p class="categ2">Category: Wine</p>
+    </div>
+
+    <div class="two-block">
+      <div class="reviews">
+        <p class="reviws">Reviews ({{ all_reviews }})</p>
+        <div class="all-reviews">
+
+        {% for review in reviews %}
+          <div class="each-review">
+            <img src="{% static 'shop/images/site-img/avatar-review.png' %}">
+            <div class="right-colum">
+              <p>{{ review.name }}</p>
+              <p>{{ review.date }}</p>
+              <p>
+                {{ review.review }}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+
+
+        <div class="write-review">
+          <p>Add a review to La Fleur Lily</p>
+          <form method="post" id="review-from">
+            {% csrf_token %}
+            <input id="name" name="name" type="text" placeholder="Write your name">
+            <input id="review" name="review" type="text" placeholder="Write your Review">
+            <button type="submit" id="submit-review" name="action" value="add-review">Submit my review</button>
+          </form>
+        </div>
+      </div>
+      
+      <h2 class="related-prod">Related products</h2>
+
+      <div class="proucts-shop">
+        
+      {% for wine in all_products %}
+        <div class="product-card">
+            <a href="{% url 'each_wine' wine_slug=wine.slug %}">
+                <img src="{{ wine.image.url }}" alt="Wait please" />
+              </a>
+              <div class="info-product-shop">
+                <h2 class="product-name">{{ wine.name }}</h2>
+                <p class="product-category">{{ wine.category }}</p>
+                <p class="product-price">${{ wine.price }}0</p>
+                <div class="review">
+                  <p>stars</p>
+                  <div class="stars-img">
+                  {% for numb in '12345' %}
+                    <img src="{% static 'shop/images/site-img/star-photo-review.svg' %}"/>
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+        </div>
+      {% endfor %}
+
+
+      </div>
+    </div>
+
+    {% include 'base/footer.html' %}
+
+  </body>
+</html>
